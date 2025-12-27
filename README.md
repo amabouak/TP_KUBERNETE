@@ -823,69 +823,6 @@ minikube start --driver=docker
 
 ---
 
-## 📄 **Livrables**
-
-### **Livrables attendus pour chaque TP :**
-
-#### **TP1 - Nginx :**
-- ✅ Capture d'écran de `kubectl get pods`
-- ✅ Capture navigateur sur http://localhost:8080
-- ✅ Explication Pod vs Container
-
-#### **TP2 - YAML :**
-- ✅ Fichier `nginx-deployment.yaml`
-- ✅ Capture de `kubectl get deployments`
-- ✅ Capture de `kubectl get svc` avec NodePort
-
-#### **TP3 - Services :**
-- ✅ Tableau comparatif ClusterIP/NodePort/LoadBalancer
-- ✅ Réponses au QCM
-- ✅ Capture des 3 services
-
-#### **TP4 - Node.js + MySQL :**
-- ✅ Fichiers YAML (4 fichiers)
-- ✅ Fichiers Node.js (app.js, Dockerfile, package.json)
-- ✅ Capture de `kubectl get all`
-- ✅ Capture navigateur de l'application fonctionnelle
-- ✅ Schéma d'architecture
-
-### **Génération automatique des livrables :**
-```bash
-#!/bin/bash
-# generate-livrables.sh
-
-echo "📁 Génération des livrables..."
-
-# 1. État du cluster
-kubectl get all -o wide > livrable-etat-cluster.txt
-
-# 2. Détails
-kubectl describe svc node-service mysql-service > livrable-services.txt
-kubectl describe pod -l app=node-app > livrable-pod-node.txt
-kubectl describe pod -l app=mysql > livrable-pod-mysql.txt
-
-# 3. Logs
-kubectl logs -l app=node-app --tail=100 > livrable-logs-node.txt
-kubectl logs -l app=mysql --tail=100 > livrable-logs-mysql.txt
-
-# 4. Test de connexion
-MINIKUBE_IP=$(minikube ip)
-curl -s "http://$MINIKUBE_IP:30001" > livrable-test.html
-
-# 5. Fichiers sources
-tar czf livrable-sources.tar.gz \
-  mysql-deployment.yaml \
-  mysql-service.yaml \
-  node-deployment.yaml \
-  node-service.yaml \
-  node-app/
-
-echo "✅ Livrables générés:"
-ls -la livrable-*
-```
-
----
-
 ## 📖 **Glossaire**
 
 | Terme | Définition |
@@ -904,7 +841,7 @@ ls -la livrable-*
 
 ## 🎓 **Conclusion**
 
-Ce guide complet vous permet de maîtriser les bases de Kubernetes pour le DevOps. Vous avez appris à :
+Ce guide complet vous permet de maîtriser les bases de Kubernetes pour le DevOps. Vous apprendrez à :
 
 1. **Configurer un environnement Kubernetes** sur Kali Linux
 2. **Déployer des applications simples** avec Nginx
@@ -930,4 +867,4 @@ En cas de problème :
 3. Décrivez la ressource avec `kubectl describe`
 4. Réinitialisez avec `kubectl delete all --all`
 
-**Bon apprentissage et bon déploiement !** 🚀
+**Fait par: Khamis Amaboua** 
