@@ -1,0 +1,15 @@
+NAME                             READY   STATUS    RESTARTS      AGE     IP           NODE       NOMINATED NODE   READINESS GATES
+pod/nginx-depl-54fc99c8d-p2f6z   1/1     Running   1 (55m ago)   3h55m   10.244.0.7   minikube   <none>           <none>
+
+NAME                      TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE     SELECTOR
+service/kubernetes        ClusterIP      10.96.0.1        <none>        443/TCP        11h     <none>
+service/nginx-clusterip   ClusterIP      10.104.195.26    <none>        80/TCP         3h50m   app=nginx
+service/nginx-depl        NodePort       10.103.136.84    <none>        80:31323/TCP   3h54m   app=nginx
+service/nginx-lb          LoadBalancer   10.96.28.89      <pending>     80:31151/TCP   3h49m   app=nginx
+service/nginx-nodeport    NodePort       10.103.239.180   <none>        80:30904/TCP   3h50m   app=nginx
+
+NAME                         READY   UP-TO-DATE   AVAILABLE   AGE     CONTAINERS   IMAGES         SELECTOR
+deployment.apps/nginx-depl   1/1     1            1           3h55m   nginx        nginx:alpine   app=nginx
+
+NAME                                   DESIRED   CURRENT   READY   AGE     CONTAINERS   IMAGES         SELECTOR
+replicaset.apps/nginx-depl-54fc99c8d   1         1         1       3h55m   nginx        nginx:alpine   app=nginx,pod-template-hash=54fc99c8d

@@ -1,0 +1,20 @@
+=========================================
+RÉSUMÉ DU DÉPLOIEMENT KUBERNETES
+=========================================
+Date: ven. 26 déc. 2025 23:50:52 GMT
+Application: Node.js + MySQL
+Pods déployés: 
+NAME                         READY   STATUS    RESTARTS      AGE
+nginx-depl-54fc99c8d-p2f6z   1/1     Running   1 (55m ago)   3h55m
+
+Services: 
+NAME              TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE
+kubernetes        ClusterIP      10.96.0.1        <none>        443/TCP        11h
+nginx-clusterip   ClusterIP      10.104.195.26    <none>        80/TCP         3h50m
+nginx-depl        NodePort       10.103.136.84    <none>        80:31323/TCP   3h54m
+nginx-lb          LoadBalancer   10.96.28.89      <pending>     80:31151/TCP   3h49m
+nginx-nodeport    NodePort       10.103.239.180   <none>        80:30904/TCP   3h50m
+
+URL d'accès: http://192.168.49.2:30001
+Port-forward local: kubectl port-forward service/node-service 8080:3000
+=========================================
